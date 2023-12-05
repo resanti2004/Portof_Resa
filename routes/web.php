@@ -2,8 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginRegisterController;
-// use App\Http\Controllers\SendEmailController;
-// use App\Http\Controllers\UserController;
+use App\Http\Controllers\FileController;
+use App\Http\Controllers\ImageController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +31,16 @@ Route::controller(LoginRegisterController::class)->group(function() {
     Route::post('/logout', 'logout')->name('logout');
 });
 
-// Route::get('/users', [UserController::class, 'index'])->name('users');
-// Route::get('/users', [UserController::class, 'index'])->name('users');
-// Route::get('/send-mail', [SendEmailController::class, 'index'])->name('kirim-email');
-// Route::post('/post-email', [SendEmailController::class, 'store'])->name('post-email');
+Route::get('/users', [ImageController::class, 'showUsers'])->name('users');
+Route::get('/users/{id}/edit', [ImageController::class, 'edit'])->name('edit');
+Route::put('/users/{id}', [ImageController::class, 'update'])->name('users.update');
+Route::delete('/users/{id}', [ImageController::class, 'destroy'])->name('users.delete');
+Route::get('/users/{user}/resize', [ImageController::class, 'resizeForm'])->name('users.resize');
+Route::post('/users/{user}/resize', [ImageController::class, 'resizeImage'])->name('resizeImage');
+
+
+Route::get('/create-file', [FileController::class, 'createFile']);
+Route::get('/get-file', [FileController::class, 'getFile']);
+Route::get('/download-file', [FileController::class, 'downloadFile']);
+Route::get('/copy-file', [FileController::class, 'copyFile']);
+Route::get('/move-file', [FileController::class, 'moveFile']);

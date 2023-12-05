@@ -56,6 +56,15 @@
                 <label class="form-label" for="password-confirmation">Password Confirmation</label>
             </div>
 
+            <!-- File uploade -->
+            <!-- <div class="form-outline mb-4">
+                  <input type="file" class="form-control @error('photo') is-invalid @enderror" id="photo" name="photo" value="{{ old('photo') }}">
+                  @if ($errors->has('photo'))
+                  <span class="text-danger">{{ $errors->first('photo') }}</span>
+                  @endif
+                  <label for="photo" class="col-md-4 col-form-label text-md-end text-start">Photo</label>
+            </div> -->
+
             <!-- Checkbox -->
             <div class="form-check d-flex justify-content-center mb-4">
               <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
